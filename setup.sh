@@ -12,30 +12,48 @@ fi
 
 # Install packages
 if [ isMac == true ]; then
+  brew update
   
+  brew install fish
+  brew install exa
+  brew tap clementtsang/bottom \
+    && brew install bottom
+  brew install zoxide \
+    && brew install fzf \
+    && zoxide init fish | source
+  brew install bat	
+  brew install broot
+
+  sudo echo /usr/local/bin/fish >> /etc/shells
+  chsh -s /usr/local/bin/fish
 else
   echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
   wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
-  sudo apt update
+  apt update
 
-  sudo apt install fish
-  sudo apt install exa
+  apt install fish
+  apt install exa
   curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.3/bottom_0.6.3_amd64.deb \
-    && sudo dpkg -i bottom_0.6.3_amd64.deb \
+    && dpkg -i bottom_0.6.3_amd64.deb \
     && rm bottom_0.6.3_amd64.deb
-  curl -sS https://webinstall.dev/zoxide | bash
-  sudo apt-get install fzf
-  sudo apt install bat \
+  apt install zoxide \
+    && apt-get install fzf \
+    && zoxide init fish | source
+  apt install bat \
     && mkdir -p ~/.local/bin \
     && ln -s /usr/bin/batcat ~/.local/bin/bat
-  curl -sL https://git.io/fisher | source \
-    && fisher install jorgebucaran/fisher
-  sudo apt install broot \
+  apt install broot \
     && broot --install
 
-  fisher install gazorby/fish-exa
-  fisher install ponko2/fish-plugin-peco
+  usermod -s /usr/bin/fish $(whoami)
 fi
+
+# Install fisher plugins
+curl -sL https://git.io/fisher | source
+
+fisher install jorgebucaran/fisher
+fisher install gazorby/fish-exa
+fisher install ponko2/fish-plugin-peco
 
 # Write fish config
 echo "set fish_greeting ''
