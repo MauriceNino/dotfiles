@@ -54,14 +54,3 @@ curl -sL https://git.io/fisher | source
 fisher install jorgebucaran/fisher
 fisher install gazorby/fish-exa
 fisher install ponko2/fish-plugin-peco
-
-# Write fish config
-echo "set fish_greeting ''
-
-bind \ca 'll'
-bind \cr 'peco_put_history (commandline -b)' 
-
-zoxide init fish | source
-
-alias cd='zoxide'
-">> ~/.config/fish/config.fish
