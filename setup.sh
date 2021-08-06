@@ -40,8 +40,7 @@ else
     && apt-get install fzf \
     && zoxide init fish | source
   apt install bat \
-    && mkdir -p ~/.local/bin \
-    && ln -s /usr/bin/batcat ~/.local/bin/bat
+    && sudo ln -s /usr/bin/batcat /usr/bin/bat
   apt install broot \
     && broot --install
 
