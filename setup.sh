@@ -37,7 +37,8 @@ if [ $isMac = true ]; then
     && sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.jdk \
     && sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk \
     && jenv add /Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home \
-    && jenv add /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
+    && jenv add /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home \
+    && brew install maven
 else
   echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
   wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
@@ -65,7 +66,8 @@ else
     && git clone https://github.com/jenv/jenv.git ~/.jenv \
     && source (jenv init - | psub) \
     && jenv add /usr/lib/jvm/java-1.8.0-openjdk-amd64 \
-    && jenv add /usr/lib/jvm/java-11-openjdk-amd64
+    && jenv add /usr/lib/jvm/java-11-openjdk-amd64 \
+    && apt install maven
 fi
 
 # Install fisher plugins
