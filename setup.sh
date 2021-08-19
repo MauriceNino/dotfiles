@@ -11,10 +11,15 @@ else
 fi
 
 # Install packages
-if [ isMac == true ]; then
+if [ $isMac = true ]; then
   brew update
-  
-  brew install fish
+
+  # Tools
+  brew install git
+  brew install fish \
+    && echo /usr/local/bin/fish >> /etc/shells \
+    && chsh -s /usr/local/bin/fish \
+    && exec $SHELL -l
   brew install exa
   brew tap clementtsang/bottom \
     && brew install bottom
@@ -24,14 +29,24 @@ if [ isMac == true ]; then
   brew install bat	
   brew install broot
 
-  sudo echo /usr/local/bin/fish >> /etc/shells
-  chsh -s /usr/local/bin/fish
+  # Java
+  brew install openjdk@8 \
+    && brew install openjdk@11 \
+    && brew install jenv \
+    && source (jenv init - | psub) \
+    && sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.jdk \
+    && sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk \
+    && jenv add /Library/Java/JavaVirtualMachines/openjdk-8.jdk/Contents/Home \
+    && jenv add /Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home
 else
   echo "deb http://packages.azlux.fr/debian/ buster main" | sudo tee /etc/apt/sources.list.d/azlux.list
   wget -qO - https://azlux.fr/repo.gpg.key | sudo apt-key add -
   apt update
 
-  apt install fish
+  apt install git
+  apt install fish \
+    && usermod -s /usr/bin/fish $(whoami) \
+    && exec $SHELL -l
   apt install exa
   curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.3/bottom_0.6.3_amd64.deb \
     && dpkg -i bottom_0.6.3_amd64.deb \
@@ -44,7 +59,13 @@ else
   apt install broot \
     && broot --install
 
-  usermod -s /usr/bin/fish $(whoami)
+  # Java
+  apt install openjdk-8-jdk \
+    && apt install openjdk-11-jdk \
+    && git clone https://github.com/jenv/jenv.git ~/.jenv \
+    && source (jenv init - | psub) \
+    && jenv add /usr/lib/jvm/java-1.8.0-openjdk-amd64 \
+    && jenv add /usr/lib/jvm/java-11-openjdk-amd64
 fi
 
 # Install fisher plugins

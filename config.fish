@@ -5,4 +5,6 @@ bind \cr 'peco_execute_history (commandline -b)'
 
 zoxide init fish | source
 
-alias cd='zoxide'
+if status is-interactive
+    source (jenv init - | psub)
+end
