@@ -1,6 +1,10 @@
 # Add repo for broot
-echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list
-sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list \
+  && sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
+
+# Add repo for ulauncher
+sudo add-apt-repository ppa:agornostal/ulauncher
+
 sudo apt update
 
 # Fish (Restart after)
@@ -40,3 +44,27 @@ sudo apt install openjdk-8-jdk \
   
 # Common
 ./setup_common_misc.sh
+
+# Misc
+sudo apt install nautilus-admin
+
+# Theming
+# Gnome Extensions
+sudo apt install gnome-tweaks
+sudo apt install gnome-shell-extensions
+sudo apt install chrome-gnome-shell
+# install https://extensions.gnome.org/extension/1160/dash-to-panel/
+# install https://extensions.gnome.org/extension/1228/arc-menu/
+
+# Wallpaper, Theme & Icons
+(cd ~/dev && git clone https://github.com/vinceliuice/Orchis-theme.git && cd Orchis-theme && ./install.sh)
+(cd ~/dev && git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && cd Tela-circle-icon-theme && ./install.sh)
+gsettings set org.gnome.desktop.background picture-uri file://(pwd)/wallpaper.jpg
+
+# Search
+sudo apt install ulauncher
+# install https://github.com/IkorJefocur/ulauncher-commandrunner
+# install https://github.com/isacikgoz/ukill
+# install https://github.com/tjquillan/ulauncher-system
+# install https://github.com/Ulauncher/ulauncher-emoji
+# install https://github.com/dcervenkov/ulauncher-z-search
