@@ -2,8 +2,8 @@
 echo "deb [signed-by=/usr/share/keyrings/azlux-archive-keyring.gpg] http://packages.azlux.fr/debian/ bullseye main" | sudo tee /etc/apt/sources.list.d/azlux.list \
   && sudo wget -O /usr/share/keyrings/azlux-archive-keyring.gpg  https://azlux.fr/repo.gpg
 
-# Add repo for ulauncher
-sudo add-apt-repository ppa:agornostal/ulauncher
+# Add repo for touchegg
+sudo add-apt-repository ppa:touchegg/stable
 
 sudo apt update
 
@@ -48,23 +48,44 @@ sudo apt install openjdk-8-jdk \
 # Misc
 sudo apt install nautilus-admin
 
-# Theming
-# Gnome Extensions
-sudo apt install gnome-tweaks
-sudo apt install gnome-shell-extensions
-sudo apt install chrome-gnome-shell
-# install https://extensions.gnome.org/extension/1160/dash-to-panel/
-# install https://extensions.gnome.org/extension/1228/arc-menu/
-
 # Wallpaper, Theme & Icons
 (cd ~/dev && git clone https://github.com/vinceliuice/Orchis-theme.git && cd Orchis-theme && ./install.sh)
 (cd ~/dev && git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && cd Tela-circle-icon-theme && ./install.sh)
 gsettings set org.gnome.desktop.background picture-uri file://(pwd)/wallpaper.jpg
 
-# Search
-sudo apt install ulauncher
-# install https://github.com/IkorJefocur/ulauncher-commandrunner
-# install https://github.com/isacikgoz/ukill
-# install https://github.com/tjquillan/ulauncher-system
-# install https://github.com/Ulauncher/ulauncher-emoji
-# install https://github.com/dcervenkov/ulauncher-z-search
+# Gestures
+sudo apt install touchegg # GUI: https://flathub.org/apps/details/com.github.joseexposito.touche
+
+# Gnome Extensions
+sudo apt install gnome-tweaks
+sudo apt install gnome-shell-extensions
+sudo apt install chrome-gnome-shell
+
+gdbus call --session \
+  --dest org.gnome.Shell.Extensions \
+  --object-path /org/gnome/Shell/Extensions \
+  --method org.gnome.Shell.Extensions.InstallRemoteExtension "animation-tweaks@Selenium-H" # https://extensions.gnome.org/extension/1680/animation-tweaks/
+gdbus call --session \
+  --dest org.gnome.Shell.Extensions \
+  --object-path /org/gnome/Shell/Extensions \
+  --method org.gnome.Shell.Extensions.InstallRemoteExtension "arcmenu@arcmenu.com" # https://extensions.gnome.org/extension/1228/arc-menu/
+gdbus call --session \
+  --dest org.gnome.Shell.Extensions \
+  --object-path /org/gnome/Shell/Extensions \
+  --method org.gnome.Shell.Extensions.InstallRemoteExtension "blur-my-shell@aunetx" # https://extensions.gnome.org/extension/3193/blur-my-shell/
+gdbus call --session \
+  --dest org.gnome.Shell.Extensions \
+  --object-path /org/gnome/Shell/Extensions \
+  --method org.gnome.Shell.Extensions.InstallRemoteExtension "dash-to-panel@jderose9.github.com" # https://extensions.gnome.org/extension/1160/dash-to-panel/
+gdbus call --session \
+  --dest org.gnome.Shell.Extensions \
+  --object-path /org/gnome/Shell/Extensions \
+  --method org.gnome.Shell.Extensions.InstallRemoteExtension "x11gestures@joseexposito.github.io" # https://extensions.gnome.org/extension/4033/x11-gestures/
+
+# Expose settings in gsettings
+find ~/.local/share/gnome-shell/extensions/ -type f | grep -i gschema.xml | xargs -i cp {} ~/.local/share/glib-2.0/schemas/
+glib-compile-schemas ~/.local/share/glib-2.0/schemas/
+
+# Load extension settings
+# NEEDS TO BE DONE MANUALLY, using gsettings_dump
+# dump created using: gsettings list-schemas | grep extension | xargs -i gsettings list-recursively {} > ~/dev/dotfiles/gsettings_dump
