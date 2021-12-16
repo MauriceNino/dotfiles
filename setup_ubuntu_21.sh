@@ -87,5 +87,15 @@ find ~/.local/share/gnome-shell/extensions/ -type f | grep -i gschema.xml | xarg
 glib-compile-schemas ~/.local/share/glib-2.0/schemas/
 
 # Load extension settings
-# NEEDS TO BE DONE MANUALLY, using gsettings_dump
 # dump created using: gsettings list-schemas | grep extension | xargs -i gsettings list-recursively {} > ~/dev/dotfiles/gsettings_dump
+# note: to paste this, you need to open a /bin/bash shell and paste the following:
+while IFS= read -r line; do
+  schema="$(echo "$line" | cut -d' ' -f1)"
+  extension="$(echo "$line" | cut -d' ' -f2)"
+  value="$(echo "$line" | cut -d' ' -f3-)"
+
+  echo "parsing line: $line"
+  echo "setting $schema $extension to $value"
+  gsettings set $schema $extension "$value"
+  echo "---------------------------------------------------------------------------"
+done < ~/dev/dotfiles/gsettings_dump
