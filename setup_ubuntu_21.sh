@@ -64,10 +64,6 @@ sudo apt install chrome-gnome-shell
 gdbus call --session \
   --dest org.gnome.Shell.Extensions \
   --object-path /org/gnome/Shell/Extensions \
-  --method org.gnome.Shell.Extensions.InstallRemoteExtension "animation-tweaks@Selenium-H" # https://extensions.gnome.org/extension/1680/animation-tweaks/
-gdbus call --session \
-  --dest org.gnome.Shell.Extensions \
-  --object-path /org/gnome/Shell/Extensions \
   --method org.gnome.Shell.Extensions.InstallRemoteExtension "arcmenu@arcmenu.com" # https://extensions.gnome.org/extension/1228/arc-menu/
 gdbus call --session \
   --dest org.gnome.Shell.Extensions \
@@ -81,6 +77,10 @@ gdbus call --session \
   --dest org.gnome.Shell.Extensions \
   --object-path /org/gnome/Shell/Extensions \
   --method org.gnome.Shell.Extensions.InstallRemoteExtension "x11gestures@joseexposito.github.io" # https://extensions.gnome.org/extension/4033/x11-gestures/
+gdbus call --session \
+  --dest org.gnome.Shell.Extensions \
+  --object-path /org/gnome/Shell/Extensions \
+  --method org.gnome.Shell.Extensions.InstallRemoteExtension "sound-output-device-chooser@kgshank.net" # https://extensions.gnome.org/extension/751/audio-output-switcher/
 
 # Expose settings in gsettings
 find ~/.local/share/gnome-shell/extensions/ -type f | grep -i gschema.xml | xargs -i cp {} ~/.local/share/glib-2.0/schemas/
