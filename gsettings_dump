@@ -25,7 +25,7 @@ org.gnome.shell.extensions.arcmenu activate-on-hover false
 org.gnome.shell.extensions.arcmenu multi-monitor false
 org.gnome.shell.extensions.arcmenu brisk-shortcuts-list ['Software', 'system-software-install-symbolic', 'ArcMenu_Software', 'Settings', 'preferences-system-symbolic', 'gnome-control-center.desktop']
 org.gnome.shell.extensions.arcmenu custom-menu-button-icon ''
-org.gnome.shell.extensions.arcmenu menu-arrow-size 4
+org.gnome.shell.extensions.arcmenu menu-arrow-size 9
 org.gnome.shell.extensions.arcmenu apps-show-extra-details false
 org.gnome.shell.extensions.arcmenu menu-button-active-backgroundcolor 'rgba(238,238,236,0.18)'
 org.gnome.shell.extensions.arcmenu menu-keybinding-text '<Super>x'
@@ -40,8 +40,8 @@ org.gnome.shell.extensions.arcmenu color-themes [['Save 1', 'rgb(38,39,51)', 'rg
 org.gnome.shell.extensions.arcmenu application-shortcuts-list [['Software', 'system-software-install-symbolic', 'ArcMenu_Software'], ['Settings', 'preferences-system-symbolic', 'gnome-control-center.desktop'], ['Activities Overview', 'view-fullscreen-symbolic', 'ArcMenu_ActivitiesOverview']]
 org.gnome.shell.extensions.arcmenu disable-user-avatar false
 org.gnome.shell.extensions.arcmenu power-options [(0, true), (1, true), (2, true), (3, true), (4, false), (5, false), (6, false)]
-org.gnome.shell.extensions.arcmenu gap-adjustment 6
-org.gnome.shell.extensions.arcmenu border-color 'rgba(82,148,226,0.903915)'
+org.gnome.shell.extensions.arcmenu gap-adjustment 10
+org.gnome.shell.extensions.arcmenu border-color 'rgb(67,67,67)'
 org.gnome.shell.extensions.arcmenu runner-font-size 0
 org.gnome.shell.extensions.arcmenu force-menu-location 'Off'
 org.gnome.shell.extensions.arcmenu override-menu-button-color true
@@ -54,7 +54,7 @@ org.gnome.shell.extensions.arcmenu runner-menu-height 400
 org.gnome.shell.extensions.arcmenu runner-menu-width 500
 org.gnome.shell.extensions.arcmenu menu-button-hover-color 'rgb(214,214,214)'
 org.gnome.shell.extensions.arcmenu arc-menu-placement 'DTP'
-org.gnome.shell.extensions.arcmenu menu-color 'rgb(38,39,51)'
+org.gnome.shell.extensions.arcmenu menu-color 'rgb(44,44,44)'
 org.gnome.shell.extensions.arcmenu menu-foreground-color 'rgb(188,195,205)'
 org.gnome.shell.extensions.arcmenu custom-menu-button-icon-size 30.0
 org.gnome.shell.extensions.arcmenu enable-unity-homescreen true
@@ -86,7 +86,7 @@ org.gnome.shell.extensions.arcmenu disable-category-arrows true
 org.gnome.shell.extensions.arcmenu gnome-dash-show-applications false
 org.gnome.shell.extensions.arcmenu disable-searchbox-border true
 org.gnome.shell.extensions.arcmenu menu-width 290
-org.gnome.shell.extensions.arcmenu remove-menu-arrow true
+org.gnome.shell.extensions.arcmenu remove-menu-arrow false
 org.gnome.shell.extensions.arcmenu right-panel-width 205
 org.gnome.shell.extensions.arcmenu distro-icon 0
 org.gnome.shell.extensions.arcmenu mint-separator-index 5
@@ -99,7 +99,7 @@ org.gnome.shell.extensions.arcmenu enable-weather-widget-unity false
 org.gnome.shell.extensions.arcmenu menu-font-size 11
 org.gnome.shell.extensions.arcmenu settings-height 725
 org.gnome.shell.extensions.arcmenu mint-pinned-app-list @as []
-org.gnome.shell.extensions.arcmenu menu-border-size 0
+org.gnome.shell.extensions.arcmenu menu-border-size 1
 org.gnome.shell.extensions.arcmenu alphabetize-all-programs true
 org.gnome.shell.extensions.arcmenu directory-shortcuts-list [['Home', 'ArcMenu_Home', 'ArcMenu_Home'], ['Downloads', 'ArcMenu_Downloads', 'ArcMenu_Downloads']]
 org.gnome.shell.extensions.arcmenu enable-menu-button-arrow false
@@ -128,7 +128,7 @@ org.gnome.shell.extensions.arcmenu vert-separator false
 org.gnome.shell.extensions.arcmenu show-search-result-details false
 org.gnome.shell.extensions.arcmenu menu-button-icon 'Arc_Menu_Icon'
 org.gnome.shell.extensions.arcmenu windows-disable-frequent-apps false
-org.gnome.shell.extensions.sound-output-device-chooser show-profiles true
+org.gnome.shell.extensions.sound-output-device-chooser show-profiles false
 org.gnome.shell.extensions.sound-output-device-chooser show-input-slider true
 org.gnome.shell.extensions.sound-output-device-chooser cannot-activate-hidden-device true
 org.gnome.shell.extensions.sound-output-device-chooser show-output-devices true
@@ -155,6 +155,7 @@ org.gnome.shell.extensions.ding add-volumes-opposite true
 org.gnome.shell.extensions.ding show-trash false
 org.gnome.shell.extensions.ding arrangeorder 'NAME'
 org.gnome.shell.extensions.ding show-volumes true
+org.gnome.shell.extensions.dash-to-dock isolate-locations false
 org.gnome.shell.extensions.dash-to-panel show-showdesktop-hover false
 org.gnome.shell.extensions.dash-to-panel overview-click-to-exit false
 org.gnome.shell.extensions.dash-to-panel scroll-panel-action 'SWITCH_WORKSPACE'
