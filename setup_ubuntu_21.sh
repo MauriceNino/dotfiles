@@ -52,6 +52,9 @@ sudo apt install nautilus-admin
 (cd ~/dev && git clone https://github.com/vinceliuice/Orchis-theme.git && cd Orchis-theme && ./install.sh)
 (cd ~/dev && git clone https://github.com/vinceliuice/Tela-circle-icon-theme.git && cd Tela-circle-icon-theme && ./install.sh)
 gsettings set org.gnome.desktop.background picture-uri file://(pwd)/wallpaper.jpg
+gsettings set org.gnome.desktop.interface gtk-theme Orchis-dark
+gsettings set org.gnome.desktop.wm.preferences theme Orchis-dark
+gsettings set org.gnome.desktop.interface icon-theme Tela-circle
 
 # Gestures
 sudo apt install touchegg # GUI: https://flathub.org/apps/details/com.github.joseexposito.touche
