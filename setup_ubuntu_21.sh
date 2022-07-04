@@ -10,7 +10,8 @@ sudo apt update
 # Fish (Restart after)
 sudo apt install fish \
   && sudo usermod -s /usr/bin/fish $(whoami) \
-  && exec $SHELL -l
+  && exec $SHELL -l \
+  && ln -s ~/dev/dotfiles/config.fish ~/.config/fish/config.fish
 
 # Tools
 sudo apt install exa
@@ -29,18 +30,8 @@ sudo apt install peco
 # Install fisher plugins
 ./setup_common_fisher.sh
 
-# Node
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
-  && nvm install 17
-
-# Java
-sudo apt install openjdk-8-jdk \
-  && sudo apt install openjdk-11-jdk \
-  && git clone https://github.com/jenv/jenv.git ~/.jenv \
-  && source (jenv init - | psub) \
-  && jenv add /usr/lib/jvm/java-1.8.0-openjdk-amd64 \
-  && jenv add /usr/lib/jvm/java-11-openjdk-amd64 \
-  && sudo apt install maven
+# Version manager
+./setup_common_asdf.sh
   
 # Common
 ./setup_common_misc.sh
