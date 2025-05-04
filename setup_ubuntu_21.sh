@@ -11,10 +11,11 @@ sudo apt update
 sudo apt install fish \
   && sudo usermod -s /usr/bin/fish $(whoami) \
   && exec $SHELL -l \
-  && ln -s ~/dev/dotfiles/config.fish ~/.config/fish/config.fish
+  && ln -sf ~/dev/dotfiles/config.fish ~/.config/fish/config.fish
 
 # Tools
-sudo apt install exa
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s - -y \
+  && cargo install exa \
 curl -LO https://github.com/ClementTsang/bottom/releases/download/0.6.3/bottom_0.6.3_amd64.deb \
   && sudo dpkg -i bottom_0.6.3_amd64.deb \
   && rm bottom_0.6.3_amd64.deb
@@ -26,6 +27,7 @@ sudo apt install bat \
 sudo apt install broot \
   && broot --install
 sudo apt install peco
+sudo apt install unzip
   
 # Install fisher plugins
 ./setup_common_fisher.sh
