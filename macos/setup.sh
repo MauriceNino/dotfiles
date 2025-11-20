@@ -11,14 +11,14 @@ brew install fish \
   && exec $SHELL -l \
   && ln -sf ~/dev/dotfiles/common/config.fish ~/.config/fish/config.fish
 
-# Tools
-brew install eza
-brew install zoxide \
-  && zoxide init fish | source
-brew install peco
-  
 # Install fisher plugins
 ./../common/setup_fisher.sh
 
-# Version manager
-./../common/setup_asdf.sh
+# Tools
+brew install eza zoxide peco mise
+brew install --cask 1password firefox marta alt-tab obsidian visual-studio-code karabiner-elements
+
+zoxide init fish | source
+
+# Install mise plugins
+./../common/setup_mise.sh
