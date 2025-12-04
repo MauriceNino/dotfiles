@@ -106,6 +106,7 @@
                     },
                     {
                         "description": "ALT + TAB",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

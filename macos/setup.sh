@@ -1,24 +1,43 @@
-# Common
-./setup_common_misc.sh
-
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
   && brew update
+
+# Basic tools
+brew install \
+  git \
+  git-lfs \
 
 # Fish (Restart after)
 brew install fish \
   && echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells \
   && chsh -s /opt/homebrew/bin/fish \
   && exec $SHELL -l \
-  && ln -sf ~/dev/dotfiles/common/config.fish ~/.config/fish/config.fish
+  && ln -sf ~/dev/dotfiles/macos/config.fish ~/.config/fish/config.fish
 
 # Install fisher plugins
 ./../common/setup_fisher.sh
 
 # Tools
-brew install eza zoxide peco mise
-brew install --cask 1password firefox marta alt-tab obsidian visual-studio-code karabiner-elements
+brew install \
+  eza \
+  peco \
+  zoxide \
+  mise
+brew install --cask \
+  1password \
+  alt-tab \
+  firefox \
+  karabiner-elements \
+  marta \
+  obsidian \
+  orbstack \
+  visual-studio-code
 
-zoxide init fish | source
+# Tools setup
+ln -sf ~/dev/dotfiles/macos/karabiner.json ~/.config/karabiner/karabiner.json
+ln -sf ~/dev/dotfiles/macos/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 
-# Install mise plugins
+# Common
+./setup_common_misc.sh
+
+# Install mise plugins + default tool versions
 ./../common/setup_mise.sh
