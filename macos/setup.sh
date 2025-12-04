@@ -13,19 +13,24 @@ brew install fish \
   && exec $SHELL -l \
   && ln -sf ~/dev/dotfiles/macos/config.fish ~/.config/fish/config.fish
 
+# Remove "last login" message
+touch ~/.hushlogin
+
 # Install fisher plugins
 ./../common/setup_fisher.sh
 
 # Tools
 brew install \
   eza \
+  fastfetch \
+  mise \
   peco \
-  zoxide \
-  mise
+  zoxide
 brew install --cask \
   1password \
   alt-tab \
   firefox \
+  ghostty \
   karabiner-elements \
   marta \
   obsidian \
@@ -35,6 +40,7 @@ brew install --cask \
 # Tools setup
 ln -sf ~/dev/dotfiles/macos/karabiner.json ~/.config/karabiner/karabiner.json
 ln -sf ~/dev/dotfiles/macos/vscode/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
+ln -sf ~/dev/dotfiles/common/ghostty ~/.config/ghostty
 
 # Common
 ./setup_common_misc.sh

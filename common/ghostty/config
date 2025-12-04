@@ -1,0 +1,12 @@
+theme = theme.conf
+
+title = ""
+window-width = 140
+window-height = 40
+window-inherit-working-directory = false
+
+background-opacity = 0.85
+background-blur = true
+
+auto-update = off
+quit-after-last-window-closed = true

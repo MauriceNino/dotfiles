@@ -5,4 +5,5 @@ if status is-interactive
     bind ctrl-r peco_select_history
 
     zoxide init fish | source
+    fastfetch --config ~/dev/dotfiles/common/fastfetch_config.jsonc
 end
