@@ -5,3 +5,4 @@ fisher install jorgebucaran/fisher
 fisher install gazorby/fish-exa
 fisher install oh-my-fish/plugin-peco
 fisher install decors/fish-colored-man
+fisher install IlanCosman/tide@v6

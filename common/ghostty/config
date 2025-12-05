@@ -1,6 +1,7 @@
 theme = theme.conf
 
 title = ""
+font-size = 10
 window-width = 140
 window-height = 40
 window-inherit-working-directory = false
@@ -10,3 +11,8 @@ background-blur = true
 
 auto-update = off
 quit-after-last-window-closed = true
+
+keybind = ctrl+w=close_tab
+keybind = ctrl+t=new_tab
+keybind = alt+arrow_left=previous_tab
+keybind = alt+arrow_right=next_tab
