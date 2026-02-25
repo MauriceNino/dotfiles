@@ -21,6 +21,7 @@ touch ~/.hushlogin
 
 # Tools
 brew install \
+  atuin \
   eza \
   fastfetch \
   mise \

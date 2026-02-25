@@ -11,12 +11,15 @@ alias ls='eza -a --color=always --group-directories-first --icons' # preferred l
 alias ll='eza -al --color=always --group-directories-first --icons'  # long format
 alias lt='eza -aT --color=always --group-directories-first --icons' # tree listing
 
+alias gitgraph="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%C(dim white)- %an%n''            %C(white)%s%C(reset) %C(reset)'"
+
+# Tide settings
+set -U tide_git_truncation_length 50
+
 if status is-interactive
     bind ctrl-a 'printf "\n"; ll; commandline -f repaint'
 
     zoxide init fish | source
     mise activate fish | source
     atuin init fish | source
-
-    tide configure --auto --style=Lean --prompt_colors='16 colors' --show_time=No --lean_prompt_height='One line' --prompt_spacing=Compact --icons='Few icons' --transient=No
 end
